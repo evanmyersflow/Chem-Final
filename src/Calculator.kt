@@ -7,6 +7,8 @@ import currentPoints.Companion.x
 import Grade.Companion.y
 import kotlin.collections.Array
 
+val letterGrades: String
+    get() = scanner.nextLine().toUpperCase().trim()
 val scanner = Scanner(System.`in`)
 val possibleGrades = listOf("A", "B", "C", "D")
 const val SEPERATOR = ","
@@ -28,15 +30,13 @@ fun main(args: Array<String>) {
 
 fun printPossibleGrades() {
     if (possibleGrades.contains(input)) {
-        when (possibleGrades) {
-            "A" -> 9 / 10
-            "B" -> 8 / 10
-            "C" -> 7 / 10
-            "D" -> 6 / 10
-        }   else {
-            throw -> IllegalStateException("That's not a grade!")
+        when (letterGrades) {
+            "A" -> (9 / 10)
+            "B" -> (8 / 10)
+            "C" -> (7 / 10)
+            "D" -> (6 / 10)
+            else -> throw IllegalStateException("That's not a grade!")
         }
-
     }
 }
 
