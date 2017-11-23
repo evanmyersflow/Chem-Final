@@ -42,7 +42,7 @@ fun printPossibleGrades() {
 
 val (currentPoints) = try {
     input.split(SEPERATOR).let {
-        Points.parse(first().trim()) to Grade.parse(last().trim())
+        Points.parse(first().trim()) to currentPoints.parse(last().trim())
     }
 } catch (e: IllegalStateException) {
     println("Those entries will not work")
@@ -74,7 +74,7 @@ val (Grade) = try {
 data class Grade(val y: Int) {
     companion object {
         fun parse(input: String): Grade {
-            if (input.length != 1 || input.length != 2 || input.length != 3)
+            if (input.length != 1)
                 throw IllegalStateException()
             val y = input
             return Grade(y)
