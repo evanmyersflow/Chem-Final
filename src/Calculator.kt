@@ -5,15 +5,15 @@ import currentPoints.Companion.input
 
 import currentPoints.Companion.x
 import Grade.Companion.y
-import kotlin.collections.Array
+import kotlin.collections.IntIterator
 
 val letterGrades: String
     get() = scanner.nextLine().toUpperCase().trim()
 val scanner = Scanner(System.`in`)
 val possibleGrades = listOf("A", "B", "C", "D")
 const val SEPERATOR = ","
-val math = Array
-
+val math = IntIterator<>()
+val gradeMath = IntIterator<Grade>()
 //I know array isn't the right collection, don't know what the right one is
 
 val input = scanner.nextLine().toUpperCase().trim()
@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
     println("Enter your total points from synergy (ex: 345)")
 
     while (true) {
-        printMath(math)
+        printMath()
         printPossibleGrades()
     }
 }
@@ -49,20 +49,21 @@ val (currentPoints) = try {
     continue@loop
 }
 
-data class currentPoints(val x: Int) {
+data class Points(val x: String) {
     companion object {
-        fun parse(input: String): currentPoints {
+        fun parse(input: String): Points {
             if (input.length != 1 || input.length != 2 || input.length != 3)
                 throw IllegalStateException()
             val x = input
-            return currentPoints(x)
+            return Points(x)
         }
+
 
     }
 }
 
 
-val (Grade) = try {
+val (currentGrade) = try {
     input.split(SEPERATOR).let {
         Points.parse(first().trim()) to Grade.parse(last().trim())
     }
@@ -71,7 +72,7 @@ val (Grade) = try {
     continue@loop
 }
 
-data class Grade(val y: Int) {
+data class Grade(val y: String) {
     companion object {
         fun parse(input: String): Grade {
             if (input.length != 1)
@@ -84,5 +85,7 @@ data class Grade(val y: Int) {
 }
 
 private fun printMath() {
+    val x = Points
+    val y = Grade
     x / 10 * 50 / 0.1 - 50 / 0.1 * y / 366 * 9 / 10
 }
